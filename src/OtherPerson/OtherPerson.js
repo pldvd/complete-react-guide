@@ -1,8 +1,12 @@
 import React from 'react';
 
-const OtherPerson = () => {
-  let age = Math.floor(Math.random() * 35);
-  return <h2 className="mono">Im the other person, I am {age} years old.</h2>
+const OtherPerson = (props) => {
+  return (
+    <div>
+      <h2 className="mono">Im {props.name}, I am {props.age} years old.</h2>
+      <p>{props.children}</p>
+    </div>
+  )
 }
 
 export default OtherPerson;

@@ -1,13 +1,11 @@
 import React from 'react';
 import './person.css';
-import OtherPerson from '../OtherPerson/OtherPerson';
 
 
-const person = () => {
+const person = (props) => {
   return (
     <div>
-      <h1 className="mono">Hi I am a component</h1>
-      <OtherPerson />
+      <h2 className="mono">Im {props.name}, I am {props.age} years old.</h2>
     </div>
   )
   
