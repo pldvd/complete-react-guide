@@ -5,10 +5,11 @@ import './App.css';
 import Person from './Person/Person';
 
 class App extends Component {
+  
   render() {
     return (
       <div className='App'>
-        <h1>Hi, my name is David</h1>
+        <h1>Hi, my name is David I am {this.age} years old</h1>
         <Person/>
       </div>
     );
