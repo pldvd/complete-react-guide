@@ -3,10 +3,14 @@ import './person.css';
 
 
 const person = (props) => {
+  const style = {
+    borderRadius: "20px",
+  }
+
   return (
     <div className="Person">
       <h2 onClick={props.click} className="mono">Im {props.name}, I am {props.age} years old.</h2>
-      <input type="text" onChange={props.changed} placeholder={props.name}/>
+      <input type="text" onChange={props.changed} placeholder={props.name} style={style}/>
     </div>
   )
   
