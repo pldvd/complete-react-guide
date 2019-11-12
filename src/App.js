@@ -26,9 +26,9 @@ class App extends Component {
   handleInput = (event) => {
     this.setState({
       persons: [
-        { name: "david", age: 34 },
+        { name: event.target.value, age: 34 },
         { name: event.target.value, age: 36 },
-        { name: "petra", age: 33 }
+        { name: event.target.value, age: 33 }
       ]
     })
   }
@@ -38,9 +38,9 @@ class App extends Component {
       <div className='App'>
         <h1>Hi, from the App component</h1>
         <button onClick={this.changeNameHandler.bind(this, 'Davidkaaaa')}>Switch name</button>
-        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} click={this.changeNameHandler} />
-        <Person name={this.state.persons[1].name} age={this.state.persons[1].age} click={this.changeNameHandler} changed={this.handleInput}/>
-        <Person name={this.state.persons[2].name} age={this.state.persons[2].age} click={this.changeNameHandler} />
+        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} click={this.changeNameHandler} changed={this.handleInput} />
+        <Person name={this.state.persons[1].name} age={this.state.persons[1].age} click={this.changeNameHandler} changed={this.handleInput} />
+        <Person name={this.state.persons[2].name} age={this.state.persons[2].age} click={this.changeNameHandler} changed={this.handleInput} />
       </div>
     );
   }
