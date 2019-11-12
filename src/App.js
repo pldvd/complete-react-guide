@@ -15,10 +15,9 @@ class App extends Component {
   changeNameHandler = () => {
     this.setState({
       persons: [
-        { name: "Pal David", age: 34 },
-        { name: "Ana Rodriguez", age: 36 },
-        { name: "Pal Petra", age: 33 }
-      ], 
+        ...this.state.persons,
+        { name: 'Tatuka', age: 87 }
+      ],
       wasClicked: true
     }, () => console.log(this.state));
   };
