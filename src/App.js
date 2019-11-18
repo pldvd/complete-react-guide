@@ -7,9 +7,9 @@ class App extends Component {
 
   state = {
     persons: [
-      { name: "david", age: 34 },
-      { name: "ana", age: 36 },
-      { name: "petra", age: 33 }
+      { id: "vasd", name: "david", age: 34 },
+      { id: "bcadf", name: "ana", age: 36 },
+      { id: "ölläd", name: "petra", age: 33 }
     ],
     showPersons: false
   }
@@ -20,22 +20,10 @@ class App extends Component {
     })
   }
 
-  changeNameHandler = (name) => {
-    this.setState({
-      persons: [
-        ...this.state.persons,
-        { name: name, age: 87 }
-      ],
-      wasClicked: true
-    }, () => console.log(this.state));
-  };
-
-  deletePerson = (e) => {
-    const selected = e.currentTarget.getAttribute('name');
-
-    this.setState({
-      persons: [...this.state.persons.filter(person => person.name !== selected)]
-    })
+  deletePerson = (personIndex) => {
+    const persons = [...this.state.persons];
+    persons.splice(personIndex, 1);
+    this.setState({ persons: persons });
   }
 
   handleInput = (event) => {
@@ -56,7 +44,16 @@ class App extends Component {
 
       persons = <div className="container">
         {
-          this.state.persons.map((person, index) => <Person key={index} name={person.name} age={person.age} click={this.deletePerson} changed={this.handleInput}></Person>)
+          this.state.persons
+            .map((person, index) => {
+              return <Person
+                key={person.id}
+                name={person.name}
+                age={person.age}
+                click={() => this.deletePerson(index)}
+                changed={this.handleInput}>
+              </Person>
+            })
         }
       </div>;
     }
