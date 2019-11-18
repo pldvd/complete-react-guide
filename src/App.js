@@ -30,6 +30,14 @@ class App extends Component {
     }, () => console.log(this.state));
   };
 
+  deletePerson = (e) => {
+    const selected = e.currentTarget.getAttribute('name');
+
+    this.setState({
+      persons: [...this.state.persons.filter(person => person.name !== selected)]
+    })
+  }
+
   handleInput = (event) => {
     this.setState({
       persons: [
@@ -42,14 +50,15 @@ class App extends Component {
 
 
   render() {
-
     let persons = null;
 
     if (this.state.showPersons) {
 
-      let html = this.state.persons.map((person, index) => <Person key={index} name={person.name} age={person.age} click={this.changeNameHandler} changed={this.handleInput}></Person>)
-
-      persons = <div className="container">{html}</div>;
+      persons = <div className="container">
+        {
+          this.state.persons.map((person, index) => <Person key={index} name={person.name} age={person.age} click={this.deletePerson} changed={this.handleInput}></Person>)
+        }
+      </div>;
     }
 
 

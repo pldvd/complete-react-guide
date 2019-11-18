@@ -11,13 +11,13 @@ const person = (props) => {
     backgroundColor: state.isRed ? "red" : "white"
   }
 
-  const toggleRed = () => stateHandler({ isRed: !state.isRed })
+  const toggleRed = () => stateHandler({isRed: !state.isRed})
 
 
   return (
-    <div className="Person">
-      <h2 onClick={props.click} className="mono">Im {props.name}, I am {props.age} years old.</h2>
-      <input type="text" onChange={props.changed} onClick={toggleRed} placeholder={props.name} style={style} />
+    <div className="Person" onClick={props.click} name={props.name}>
+      <h2 className="mono">Im {props.name}, I am {props.age} years old.</h2>
+      <input type="text" onChange={props.changed} placeholder={props.name} style={style} />
     </div>
   )
 
