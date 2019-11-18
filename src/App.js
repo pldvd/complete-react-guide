@@ -40,18 +40,25 @@ class App extends Component {
     })
   }
 
+
   render() {
+
+    let persons = null;
+
+    if (this.state.showPersons) {
+      persons = <div className="container">
+        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} click={this.changeNameHandler.bind(this, 'Tatuka')} changed={this.handleInput} />
+        <Person name={this.state.persons[1].name} age={this.state.persons[1].age} click={this.changeNameHandler} changed={this.handleInput} />
+        <Person name={this.state.persons[2].name} age={this.state.persons[2].age} click={this.changeNameHandler} changed={this.handleInput} />
+      </div>;
+    }
+
+
     return (
       <div className='App'>
         <h1>Hi, from the App component</h1>
         <button onClick={this.togglePersonHandler}>Switch name</button>
-        { this.state.showPersons ?
-          <div className="container">
-            <Person name={this.state.persons[0].name} age={this.state.persons[0].age} click={this.changeNameHandler.bind(this, 'Tatuka')} changed={this.handleInput} />
-            <Person name={this.state.persons[1].name} age={this.state.persons[1].age} click={this.changeNameHandler} changed={this.handleInput} />
-            <Person name={this.state.persons[2].name} age={this.state.persons[2].age} click={this.changeNameHandler} changed={this.handleInput} />
-          </div> : null
-        }
+        {persons}
       </div>
     );
   }
