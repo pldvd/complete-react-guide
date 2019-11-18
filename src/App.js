@@ -33,7 +33,7 @@ class App extends Component {
   handleInput = (event) => {
     this.setState({
       persons: [
-        { name: 'Max', age: 28 },
+        { name: event.target.value, age: 28 },
         { name: 'Manu', age: 29 },
         { name: 'Stephanie', age: 26 }
       ]
@@ -46,11 +46,10 @@ class App extends Component {
     let persons = null;
 
     if (this.state.showPersons) {
-      persons = <div className="container">
-        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} click={this.changeNameHandler.bind(this, 'Tatuka')} changed={this.handleInput} />
-        <Person name={this.state.persons[1].name} age={this.state.persons[1].age} click={this.changeNameHandler} changed={this.handleInput} />
-        <Person name={this.state.persons[2].name} age={this.state.persons[2].age} click={this.changeNameHandler} changed={this.handleInput} />
-      </div>;
+
+      let html = this.state.persons.map((person, index) => <Person key={index} name={person.name} age={person.age} click={this.changeNameHandler} changed={this.handleInput}></Person>)
+
+      persons = <div className="container">{html}</div>;
     }
 
 
