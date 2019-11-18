@@ -1,10 +1,12 @@
 .Person {
-  width: 60%;
+  width: 100%;
   border: 2px solid black;
   box-shadow: 0 2px 20px black;
   padding: 15px;
+}
 
-  align-self: center;
+.Person:not(:last-child) {
+  margin-bottom: 20px;
 }
 
 .mono {

@@ -7,6 +7,8 @@ const person = (props) => {
     borderRadius: "20px",
   }
 
+  const tatuka = "Tatuka";
+
   return (
     <div className="Person">
       <h2 onClick={props.click} className="mono">Im {props.name}, I am {props.age} years old.</h2>
