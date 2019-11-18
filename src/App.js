@@ -26,14 +26,11 @@ class App extends Component {
     this.setState({ persons: persons });
   }
 
-  handleInput = (event) => {
-    this.setState({
-      persons: [
-        { name: event.target.value, age: 28 },
-        { name: 'Manu', age: 29 },
-        { name: 'Stephanie', age: 26 }
-      ]
-    })
+  changeName = (event) => {
+    console.log(event.target.value);
+    // this.setState({
+
+    // })
   }
 
 
@@ -51,7 +48,7 @@ class App extends Component {
                 name={person.name}
                 age={person.age}
                 click={() => this.deletePerson(index)}
-                changed={this.handleInput}>
+                changed={this.changeName}>
               </Person>
             })
         }
@@ -67,15 +64,6 @@ class App extends Component {
       </div>
     );
   }
-  // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'does it work now?'));
 }
 
 export default App;
-
-// state = {
-//   persons: [
-//     { name: "david", age: 34 },
-//     { name: "ana", age: 36 },
-//     { name: "petra", age: 33 }
-//   ]
-// }
