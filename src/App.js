@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import Radium from 'radium';
 
 import Person from './Person/Person';
 
@@ -8,10 +7,10 @@ class App extends Component {
 
   state = {
     persons: [
-      { id: "vasd", name: "david", age: 34 },
-      { id: "bcadf", name: "ana", age: 36 },
-      { id: "ölläd", name: "petra", age: 33 },
-      { id: "öläd", name: "petra", age: 33 }
+      { id: 'vasd', name: 'david', age: 34 },
+      { id: 'bcadf', name: 'ana', age: 36 },
+      { id: 'ölläd', name: 'petra', age: 33 },
+      { id: 'öläd', name: 'petra', age: 33 }
     ],
     showPersons: false
   }
@@ -49,9 +48,10 @@ class App extends Component {
     const btnStyle = {
       backgroundColor: 'green',
       padding: '1em',
-      ':hover': {
-        backgroundColor: 'lightgreen'
-      }
+      // ':hover': {
+      //   backgroundColor: 'lightgreen'
+      // },
+      cursor: 'pointer'
     }
 
     if (this.state.showPersons) {
@@ -86,14 +86,14 @@ class App extends Component {
     }
 
     return (
-      <div className='App'>
-        <h1>Hi, from the App component</h1>
-        <p className={paragraphClassList.join(' ')}>This is really working</p>
-        <button style={btnStyle} onClick={this.togglePersonHandler}>Toggle name</button>
-        {persons}
-      </div>
+        <div className='App'>
+          <h1>Hi, from the App component</h1>
+          <p className={paragraphClassList.join(' ')}>This is really working</p>
+          <button style={btnStyle} onClick={this.togglePersonHandler}>Toggle name</button>
+          {persons}
+        </div>
     );
   }
 }
 
-export default Radium(App);
+export default App;
