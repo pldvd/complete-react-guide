@@ -9,7 +9,8 @@ class App extends Component {
     persons: [
       { id: "vasd", name: "david", age: 34 },
       { id: "bcadf", name: "ana", age: 36 },
-      { id: "ölläd", name: "petra", age: 33 }
+      { id: "ölläd", name: "petra", age: 33 },
+      { id: "öläd", name: "petra", age: 33 }
     ],
     showPersons: false
   }
@@ -67,9 +68,18 @@ class App extends Component {
       </div>;
     }
 
+    const paragraphClassList = [];
+    if (this.state.persons.length <= 3) {
+      paragraphClassList.push('red');
+    }
+    if (this.state.persons.length <= 1) {
+      paragraphClassList.push('bold');
+    }
+
     return (
       <div className='App'>
         <h1>Hi, from the App component</h1>
+        <p className={paragraphClassList.join(' ')}>This is really working</p>
         <button style={btnStyle} onClick={this.togglePersonHandler}>Toggle name</button>
         {persons}
       </div>
