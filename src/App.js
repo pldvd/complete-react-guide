@@ -1,7 +1,44 @@
 import React, { Component } from 'react';
-import './App.css';
+import styled from 'styled-components';
+// import './App.css';
 
 import Person from './Person/Person';
+
+const AppStyledDiv = styled.div`
+max-width: 800px;
+margin: 0 auto;
+height: 100vh;
+
+display: flex;
+flex-direction: column;
+align-items: center;
+
+
+.container {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.bold {
+font-weight: bold;
+}
+
+.red {
+color: red;
+}
+`
+
+const StyledButton = styled.button`
+  background-color: ${props => props.alt ? 'red' : 'green'};
+  padding: 1em;
+  margin-bottom: 30px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
+  };
+`;
 
 class App extends Component {
 
@@ -45,15 +82,6 @@ class App extends Component {
   render() {
     let persons = null;
 
-    const btnStyle = {
-      backgroundColor: 'green',
-      padding: '1em',
-      // ':hover': {
-      //   backgroundColor: 'lightgreen'
-      // },
-      cursor: 'pointer'
-    }
-
     if (this.state.showPersons) {
 
       persons = <div className="container">
@@ -70,11 +98,6 @@ class App extends Component {
             })
         }
       </div>;
-
-      btnStyle.backgroundColor = 'red';
-      btnStyle[':hover'] = {
-        backgroundColor: 'salmon'
-      }
     }
 
     const paragraphClassList = [];
@@ -86,12 +109,12 @@ class App extends Component {
     }
 
     return (
-        <div className='App'>
-          <h1>Hi, from the App component</h1>
-          <p className={paragraphClassList.join(' ')}>This is really working</p>
-          <button style={btnStyle} onClick={this.togglePersonHandler}>Toggle name</button>
-          {persons}
-        </div>
+      <AppStyledDiv>
+        <h1>Hi, from the App component</h1>
+        <p className={paragraphClassList.join(' ')}>This is really working</p>
+        <StyledButton alt={this.state.showPersons} onClick={this.togglePersonHandler}>Toggle name</StyledButton>
+        {persons}
+      </AppStyledDiv>
     );
   }
 }
