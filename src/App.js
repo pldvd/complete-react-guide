@@ -30,13 +30,13 @@ color: red;
 `
 
 const StyledButton = styled.button`
-  background-color: ${props => props.alt ? 'red' : 'green'};
+  background-color: ${props => props.personsShown ? 'red' : 'green'};
   padding: 1em;
   margin-bottom: 30px;
   cursor: pointer;
 
   &:hover {
-    background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
+    background-color: ${props => props.personsShown ? 'salmon' : 'lightgreen'};
   };
 `;
 
@@ -66,16 +66,16 @@ class App extends Component {
 
   changeName = (event, id) => {
     const personIndex = this.state.persons.findIndex(person => person.id === id);
+    const guy = { ...this.state.persons[personIndex] }
+    guy.name = event.target.value;
 
-    const person = { ...this.state.persons[personIndex] };
-    person.name = event.target.value;
-
-    const persons = this.state.persons;
-    persons[personIndex] = person;
+    const newPersons = [...this.state.persons];
+    newPersons[personIndex] = guy;
 
     this.setState({
-      persons: persons
-    })
+      persons: newPersons
+    });
+
   }
 
 
@@ -84,20 +84,22 @@ class App extends Component {
 
     if (this.state.showPersons) {
 
-      persons = <div className="container">
-        {
-          this.state.persons
-            .map((person, index) => {
-              return <Person
-                key={person.id}
-                name={person.name}
-                age={person.age}
-                click={() => this.deletePerson(index)}
-                changed={event => this.changeName(event, person.id)}>
-              </Person>
-            })
-        }
-      </div>;
+      persons = (
+        <div className="container">
+          {
+            this.state.persons
+              .map((person, index) => {
+                return <Person
+                  key={person.id}
+                  name={person.name}
+                  age={person.age}
+                  click={() => this.deletePerson(index)}
+                  changed={event => this.changeName(event, person.id)}>
+                </Person>
+              })
+          }
+        </div>
+      );
     }
 
     const paragraphClassList = [];
@@ -112,7 +114,7 @@ class App extends Component {
       <AppStyledDiv>
         <h1>Hi, from the App component</h1>
         <p className={paragraphClassList.join(' ')}>This is really working</p>
-        <StyledButton alt={this.state.showPersons} onClick={this.togglePersonHandler}>Toggle name</StyledButton>
+        <StyledButton personsShown={this.state.showPersons} onClick={this.togglePersonHandler}>Toggle name</StyledButton>
         {persons}
       </AppStyledDiv>
     );
