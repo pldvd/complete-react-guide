@@ -29,6 +29,10 @@ const Person = (props) => {
     borderRadius: '20px'
   }
 
+  if (props.name === 'petruci') {
+    throw new Error('name cannot be "petruci"');
+  }
+
   
   return (
     <StyledDiv>

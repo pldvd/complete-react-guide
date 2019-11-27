@@ -3,6 +3,7 @@ import styled from 'styled-components';
 // import './App.css';
 
 import Person from './Person/Person';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 const AppStyledDiv = styled.div`
 max-width: 800px;
@@ -47,7 +48,7 @@ class App extends Component {
       { id: 'vasd', name: 'david', age: 34 },
       { id: 'bcadf', name: 'ana', age: 36 },
       { id: 'ölläd', name: 'petra', age: 33 },
-      { id: 'öläd', name: 'petra', age: 33 }
+      { id: 'öläd', name: 'petruci', age: 33 }
     ],
     showPersons: false
   }
@@ -89,13 +90,15 @@ class App extends Component {
           {
             this.state.persons
               .map((person, index) => {
-                return <Person
-                  key={person.id}
-                  name={person.name}
-                  age={person.age}
-                  click={() => this.deletePerson(index)}
-                  changed={event => this.changeName(event, person.id)}>
-                </Person>
+                return <ErrorBoundary>
+                  <Person
+                    key={person.id}
+                    name={person.name}
+                    age={person.age}
+                    click={() => this.deletePerson(index)}
+                    changed={event => this.changeName(event, person.id)}>
+                  </Person>
+                </ErrorBoundary>
               })
           }
         </div>
@@ -114,7 +117,8 @@ class App extends Component {
       <AppStyledDiv>
         <h1>Hi, from the App component</h1>
         <p className={paragraphClassList.join(' ')}>This is really working</p>
-        <StyledButton personsShown={this.state.showPersons} onClick={this.togglePersonHandler}>Toggle name</StyledButton>
+        <StyledButton personsShown={this.state.showPersons} onClick={this.togglePersonHandler}>Toggle name
+        </StyledButton>
         {persons}
       </AppStyledDiv>
     );
