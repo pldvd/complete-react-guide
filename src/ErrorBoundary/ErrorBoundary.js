@@ -4,27 +4,22 @@ class ErrorBoundary extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      hasError: false
+      hasError: false,
+      errorMsg: ''
     }
   }
 
   static getDerivedStateFromError(error) {
-    // Update state so the next render will show the fallback UI.
-    return { hasError: true };
+    return { hasError: true, errorMsg: error.message };
   }
 
-  // componentDidCatch(error, errorInfo) {
-  //   if
-  // }
-
   render() {
-    if(this.state.hasError) {
-      return <h1>Something went wrong.</h1>
-    } 
+    if (this.state.hasError) {
+      return <h1>Something went wrong. The error message is: {this.state.errorMsg}</h1>
+    }
     return this.props.children;
   }
 
-  //to FINISH!!!
 }
 
 export default ErrorBoundary;
