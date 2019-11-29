@@ -69,11 +69,19 @@ class App extends Component {
 
 
   render() {
-
     return (
       <AppStyledDiv>
-        <PersonsController persons={this.state.persons} togglePersonHandler={this.togglePersonHandler} showPersons={this.state.showPersons} />
-        <PersonList personsAreShown={this.state.showPersons} persons={this.state.persons} deletePerson={this.deletePerson} changeName={this.changeName} />
+        <PersonsController
+          persons={this.state.persons}
+          togglePersonHandler={this.togglePersonHandler}
+          showPersons={this.state.showPersons}
+        />
+        <PersonList
+          personsAreShown={this.state.showPersons}
+          persons={this.state.persons}
+          deletePerson={this.deletePerson}
+          changeName={this.changeName}
+        />
       </AppStyledDiv>
     );
   }
