@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-// import './App.css';
 
 import PersonList from '../components/PersonList/PersonList';
-import ErrorBoundary from '../components/ErrorBoundary/ErrorBoundary';
-import { throws } from 'assert';
+import PersonsController from '../components/PersonsController/PersonsController';
 
 const AppStyledDiv = styled.div`
 max-width: 800px;
@@ -30,17 +28,6 @@ font-weight: bold;
 color: red;
 }
 `
-
-const StyledButton = styled.button`
-  background-color: ${props => props.personsShown ? 'red' : 'green'};
-  padding: 1em;
-  margin-bottom: 30px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: ${props => props.personsShown ? 'salmon' : 'lightgreen'};
-  };
-`;
 
 class App extends Component {
 
@@ -82,22 +69,10 @@ class App extends Component {
 
 
   render() {
-    
-
-    const paragraphClassList = [];
-    if (this.state.persons.length <= 3) {
-      paragraphClassList.push('red');
-    }
-    if (this.state.persons.length <= 1) {
-      paragraphClassList.push('bold');
-    }
 
     return (
       <AppStyledDiv>
-        <h1>Hi, from the App component</h1>
-        <p className={paragraphClassList.join(' ')}>This is really working</p>
-        <StyledButton personsShown={this.state.showPersons} onClick={this.togglePersonHandler}>Toggle name
-        </StyledButton>
+        <PersonsController persons={this.state.persons} togglePersonHandler={this.togglePersonHandler} showPersons={this.state.showPersons} />
         <PersonList personsAreShown={this.state.showPersons} persons={this.state.persons} deletePerson={this.deletePerson} changeName={this.changeName} />
       </AppStyledDiv>
     );
