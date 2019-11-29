@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 // import './App.css';
 
-import Person from './Person/Person';
+import PersonList from './PersonList/PersonList';
 import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+import { throws } from 'assert';
 
 const AppStyledDiv = styled.div`
 max-width: 800px;
@@ -81,28 +82,7 @@ class App extends Component {
 
 
   render() {
-    let persons = null;
-
-    if (this.state.showPersons) {
-
-      persons = (
-        <div className="container">
-          {
-            this.state.persons
-              .map((person, index) => {
-                return <ErrorBoundary key={person.id}>
-                  <Person
-                    name={person.name}
-                    age={person.age}
-                    click={() => this.deletePerson(index)}
-                    changed={event => this.changeName(event, person.id)}>
-                  </Person>
-                </ErrorBoundary>
-              })
-          }
-        </div>
-      );
-    }
+    
 
     const paragraphClassList = [];
     if (this.state.persons.length <= 3) {
@@ -118,7 +98,7 @@ class App extends Component {
         <p className={paragraphClassList.join(' ')}>This is really working</p>
         <StyledButton personsShown={this.state.showPersons} onClick={this.togglePersonHandler}>Toggle name
         </StyledButton>
-        {persons}
+        <PersonList personsAreShown={this.state.showPersons} persons={this.state.persons} deletePerson={this.deletePerson} changeName={this.changeName} />
       </AppStyledDiv>
     );
   }
