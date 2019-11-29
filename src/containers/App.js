@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 // import './App.css';
 
-import PersonList from './PersonList/PersonList';
-import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+import PersonList from '../components/PersonList/PersonList';
+import ErrorBoundary from '../components/ErrorBoundary/ErrorBoundary';
 import { throws } from 'assert';
 
 const AppStyledDiv = styled.div`
