@@ -24,7 +24,7 @@ const PersonsController = (props) => {
 
   return (
     <div>
-      <h1>Hi, from the App component</h1>
+      <h1>{props.title}</h1>
       <p className={paragraphClassList.join(' ')}>This is really working</p>
       <StyledButton personsShown={props.showPersons} onClick={props.togglePersonHandler}>Toggle name
       </StyledButton>

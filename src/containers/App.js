@@ -75,6 +75,7 @@ class App extends Component {
           persons={this.state.persons}
           togglePersonHandler={this.togglePersonHandler}
           showPersons={this.state.showPersons}
+          title={this.props.pageTitle}
         />
         <PersonList
           personsAreShown={this.state.showPersons}
