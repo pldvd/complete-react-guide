@@ -50,6 +50,23 @@ class App extends Component {
     return state;
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('[App component] shouldComponentUpdate');
+    return true;
+  }
+
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    console.log('[App component] getSnapshotBeforeUpdate');
+    return {
+      snapshot: 'app component'
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    console.log('[App component] getSnapshotBeforeUpdate');
+    console.log(snapshot);
+  }
+
 
   togglePersonHandler = () => {
     this.setState({

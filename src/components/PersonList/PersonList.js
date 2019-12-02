@@ -22,9 +22,9 @@ class PersonList extends Component {
     return true;
   }
 
-  //the getSnapshotBeforeUpdate takes the previous props and state object as params and returns a snapshot object which will be passed on as the 3rd param for the componentDidUpdate lifecycle method (this is used to pass on "last-minute" info about DOM props)
+  //the getSnapshotBeforeUpdate takes the previous props and state object as params and returns a snapshot object (or null) which will be passed on as the 3rd param for the componentDidUpdate lifecycle method (this is used to pass on "last-minute" info about DOM props), must return either a snapshot or null
   getSnapshotBeforeUpdate(prevProps, prevState) {
-    console.log('[Personlist] shouldComponentUpdate');
+    console.log('[Personlist] getSnapshotBeforeUpdate');
     return {
       snapshot: 'booom'
     }
