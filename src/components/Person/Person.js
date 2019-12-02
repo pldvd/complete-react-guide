@@ -24,7 +24,7 @@ const StyledDiv = styled.div`
   `;
 
 const Person = (props) => {
-
+  console.log('Person component starts rendering');
   const inputStyle = {
     borderRadius: '20px'
   }

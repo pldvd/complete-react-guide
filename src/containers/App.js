@@ -31,15 +31,25 @@ color: red;
 
 class App extends Component {
 
-  state = {
-    persons: [
-      { id: 'vasd', name: 'david', age: 34 },
-      { id: 'bcadf', name: 'ana', age: 36 },
-      { id: 'ölläd', name: 'petra', age: 33 },
-      { id: 'öläd', name: 'petruci', age: 33 }
-    ],
-    showPersons: false
+  constructor(props) {
+    super(props);
+    this.state = {
+      persons: [
+        { id: 'vasd', name: 'david', age: 34 },
+        { id: 'bcadf', name: 'ana', age: 36 },
+        { id: 'ölläd', name: 'petra', age: 33 },
+        { id: 'öläd', name: 'petruci', age: 33 }
+      ],
+      showPersons: false
+    }
+    console.log('this is the constructor method');
   }
+
+  static getDerivedStateFromProps(props, state) {
+    console.log('this is the getDerivedStateFromProps', props);
+    return state;
+  }
+
 
   togglePersonHandler = () => {
     this.setState({
@@ -67,8 +77,13 @@ class App extends Component {
 
   }
 
+  componentDidMount() {
+    console.log('Component did mount');
+  }
 
   render() {
+
+    console.log('this is the render method');
     return (
       <AppStyledDiv>
         <PersonsController
