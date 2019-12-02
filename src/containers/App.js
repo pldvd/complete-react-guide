@@ -42,13 +42,11 @@ class App extends Component {
       ],
       showPersons: false
     }
-    console.log('this is the constructor method');
   }
 
-  static getDerivedStateFromProps(props, state) {
-    console.log('this is the getDerivedStateFromProps', props);
-    return state;
-  }
+  // static getDerivedStateFromProps(props, state) {
+  //   return state;
+  // }
 
 
   togglePersonHandler = () => {
@@ -77,13 +75,12 @@ class App extends Component {
 
   }
 
-  componentDidMount() {
-    console.log('Component did mount');
-  }
+  // componentDidMount() {
+  //   console.log('Component did mount');
+  // }
 
   render() {
 
-    console.log('this is the render method');
     return (
       <AppStyledDiv>
         <PersonsController

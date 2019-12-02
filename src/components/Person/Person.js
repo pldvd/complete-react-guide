@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 // import './person.css';
 
@@ -23,24 +23,27 @@ const StyledDiv = styled.div`
   }
   `;
 
-const Person = (props) => {
-  console.log('Person component starts rendering');
-  const inputStyle = {
-    borderRadius: '20px'
+class Person extends Component {
+
+  constructor(props) {
+    super(props);
+    this.inputStyle = {
+      borderRadius: '20px'
+    }
   }
 
   // if (props.name === 'petruci') {
   //   throw new Error('name cannot be "petruci"');
   // }
 
-  
-  return (
-    <StyledDiv>
-      <h2 className="mono" onClick={props.click}>Im {props.name}, I am {props.age} years old.</h2>
-      <input type="text" onChange={props.changed} placeholder={props.name} style={inputStyle} />
-    </StyledDiv >
-  )
-
+  render() {
+    return (
+      <StyledDiv>
+        <h2 className="mono" onClick={this.props.click}>Im {this.props.name}, I am {this.props.age} years old.</h2>
+        <input type="text" onChange={this.props.changed} placeholder={this.props.name} style={this.inputStyle} />
+      </StyledDiv >
+    )
+  }
 }
 
 export default Person;
