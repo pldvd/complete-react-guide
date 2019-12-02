@@ -63,7 +63,7 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    console.log('[App component] getSnapshotBeforeUpdate');
+    console.log('[App component] componentDidUpdate');
     console.log(snapshot);
   }
 

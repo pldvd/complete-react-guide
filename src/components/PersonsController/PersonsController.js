@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
 const StyledButton = styled.button`
@@ -13,6 +13,10 @@ const StyledButton = styled.button`
 `;
 
 const PersonsController = (props) => {
+
+  useEffect(() => {
+    console.log('[PersonsController] useEffect');
+  })
 
   const paragraphClassList = [];
   if (props.persons.length <= 3) {
