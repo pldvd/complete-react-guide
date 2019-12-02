@@ -32,6 +32,7 @@ color: red;
 class App extends Component {
 
   constructor(props) {
+    console.log('[App component] constructor');
     super(props);
     this.state = {
       persons: [
@@ -44,9 +45,10 @@ class App extends Component {
     }
   }
 
-  // static getDerivedStateFromProps(props, state) {
-  //   return state;
-  // }
+  static getDerivedStateFromProps(props, state) {
+    console.log('[App component] getDerivedStateFromProps');
+    return state;
+  }
 
 
   togglePersonHandler = () => {
@@ -75,12 +77,12 @@ class App extends Component {
 
   }
 
-  // componentDidMount() {
-  //   console.log('Component did mount');
-  // }
+  componentDidMount() {
+    console.log('[App component] componentDidMount');
+  }
 
   render() {
-
+    console.log('[App component] render');
     return (
       <AppStyledDiv>
         <PersonsController

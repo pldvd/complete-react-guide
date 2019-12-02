@@ -26,6 +26,7 @@ const StyledDiv = styled.div`
 class Person extends Component {
 
   constructor(props) {
+    console.log('[Person] constructor');
     super(props);
     this.inputStyle = {
       borderRadius: '20px'
@@ -37,6 +38,7 @@ class Person extends Component {
   // }
 
   render() {
+    console.log('[Person] render');
     return (
       <StyledDiv>
         <h2 className="mono" onClick={this.props.click}>Im {this.props.name}, I am {this.props.age} years old.</h2>
