@@ -16,7 +16,8 @@ const PersonsController = (props) => {
 
   useEffect(() => {
     console.log('[PersonsController] useEffect');
-  })
+    alert('useffect was triggered');
+  }, [props.showPersons]);
 
   const paragraphClassList = [];
   if (props.persons.length <= 3) {
