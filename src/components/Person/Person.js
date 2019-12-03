@@ -37,6 +37,10 @@ class Person extends Component {
   //   throw new Error('name cannot be "petruci"');
   // }
 
+  componentWillUnmount() {
+    console.log(`[Person] : UNMOUNTING`)
+  }
+
   render() {
     console.log('[Person] render');
     return (

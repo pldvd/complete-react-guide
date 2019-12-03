@@ -35,6 +35,10 @@ class PersonList extends Component {
     console.log(snapshot);
   }
 
+  componentWillUnmount() {
+    console.log(`[Personlist] : UNMOUNTING`)
+  }
+
   render() {
     console.log('[PersonList] render');
     if (this.props.personsAreShown) {
@@ -55,8 +59,8 @@ class PersonList extends Component {
     }
 
     return <div className="container">{this.persons}</div>;
-  }
 
+  }
 }
 
 export default PersonList;
