@@ -17,7 +17,9 @@ const PersonsController = (props) => {
   useEffect(() => {
     console.log('[PersonsController] useEffect');
     // alert('useffect was triggered');
-  }, [props.showPersons]);
+    return () => console.log('[PersonsController] UNMOUNT cleanup')
+  }, []);
+  //if you pass an empty array as second argument to useEffect, then useEffect will only triger at component did mount and the return function will only run at componentWillUnmount
 
   const paragraphClassList = [];
   if (props.persons.length <= 3) {

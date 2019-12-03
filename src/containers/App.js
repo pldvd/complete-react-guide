@@ -41,7 +41,8 @@ class App extends Component {
         { id: 'ölläd', name: 'petra', age: 33 },
         { id: 'öläd', name: 'petruci', age: 33 }
       ],
-      showPersons: false
+      showPersons: false,
+      personsControllerIsOn: true
     }
   }
 
@@ -102,12 +103,13 @@ class App extends Component {
     console.log('[App component] render');
     return (
       <AppStyledDiv>
-        <PersonsController
+        <button onClick={() => this.setState({ personsControllerIsOn: !this.state.personsControllerIsOn })}>Delete otherButton</button>
+        {this.state.personsControllerIsOn ? <PersonsController
           persons={this.state.persons}
           togglePersonHandler={this.togglePersonHandler}
           showPersons={this.state.showPersons}
           title={this.props.pageTitle}
-        />
+        /> : null}
         <PersonList
           personsAreShown={this.state.showPersons}
           persons={this.state.persons}
