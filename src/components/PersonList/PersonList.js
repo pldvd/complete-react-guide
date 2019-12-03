@@ -50,6 +50,8 @@ class PersonList extends Component {
           </ErrorBoundary>
         )
       })
+    } else {
+      this.persons = null;
     }
 
     return <div className="container">{this.persons}</div>;

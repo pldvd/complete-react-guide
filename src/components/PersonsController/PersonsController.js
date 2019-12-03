@@ -16,7 +16,7 @@ const PersonsController = (props) => {
 
   useEffect(() => {
     console.log('[PersonsController] useEffect');
-    alert('useffect was triggered');
+    // alert('useffect was triggered');
   }, [props.showPersons]);
 
   const paragraphClassList = [];
