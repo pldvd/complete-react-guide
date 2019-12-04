@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import Auxiliary from '../../higher-order-components/Auxiliary';
 
 const StyledButton = styled.button`
   background-color: ${props => props.personsShown ? 'red' : 'green'};
@@ -29,12 +30,14 @@ const PersonsController = (props) => {
     paragraphClassList.push('bold');
   }
 
-  return ([
-      <h1>{props.title}</h1>,
-      <p className={paragraphClassList.join(' ')}>This is really working</p>,
+  return (
+    <Auxiliary>
+      <h1>{props.title}</h1>
+      <p className={paragraphClassList.join(' ')}>This is really working</p>
       <StyledButton personsShown={props.showPersons} onClick={props.togglePersonHandler}>Toggle name
       </StyledButton>
-  ])
+    </Auxiliary>
+  )
 
 }
 
