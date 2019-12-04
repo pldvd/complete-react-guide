@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Person from '../Person/Person';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 
-class PersonList extends Component {
+class PersonList extends PureComponent {
 
   constructor(props) {
     console.log('[Personlist] constructor')
@@ -17,11 +17,11 @@ class PersonList extends Component {
   }
 
   //shouldComponentUpdate takes the nextProps and nextState objects as params and returns a boolean: true if the component should update and false if it should not.
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log('[Personlist] shouldComponentUpdate');
-    // console.log(nextProps.persons,this.props.persons);
-    return nextProps.personsAreShown !== this.props.personsAreShown || nextProps.persons !== this.props.persons ? true : false;
-  }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log('[Personlist] shouldComponentUpdate');
+  //   // console.log(nextProps.persons,this.props.persons);
+  //   return nextProps.personsAreShown !== this.props.personsAreShown || nextProps.persons !== this.props.persons ? true : false;
+  // }
 
   //the getSnapshotBeforeUpdate takes the previous props and state object as params and returns a snapshot object (or null) which will be passed on as the 3rd param for the componentDidUpdate lifecycle method (this is used to pass on "last-minute" info about DOM props), must return either a snapshot or null
   getSnapshotBeforeUpdate(prevProps, prevState) {
