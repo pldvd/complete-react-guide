@@ -1,27 +1,28 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
-// import './person.css';
+import Auxiliary from '../../higher-order-components/Auxiliary';
+// import styled from 'styled-components';
+import './person.css';
 
-const StyledDiv = styled.div`
-    width: 100%;
-    border: 2px solid black;
-    box-shadow: 0 2px 20px black;
-    padding: 15px;
-    box-sizing: border-box;
-  
-  :not(:last-child) {
-    margin-bottom: 20px;
-  }
-  
-  .mono {
-    font-family: monospace;
-    color: red;
-  }  
+// const StyledDiv = styled.div`
+//     width: 100%;
+//     border: 2px solid black;
+//     box-shadow: 0 2px 20px black;
+//     padding: 15px;
+//     box-sizing: border-box;
 
-  @media (min-width: 500px) {
-    width: 450px;
-  }
-  `;
+//   :not(:last-child) {
+//     margin-bottom: 20px;
+//   }
+
+//   .mono {
+//     font-family: monospace;
+//     color: red;
+//   }  
+
+//   @media (min-width: 500px) {
+//     width: 450px;
+//   }
+//   `;
 
 class Person extends Component {
 
@@ -41,6 +42,7 @@ class Person extends Component {
     console.log(`[Person] : UNMOUNTING`)
   }
 
+  //This is neccessary because props always change if props.name changes, after trying it out with PureComponent
   shouldComponentUpdate(nextProps, nextState) {
     return nextProps.name !== this.props.name;
   }
@@ -48,10 +50,10 @@ class Person extends Component {
   render() {
     console.log('[Person] render');
     return (
-      <StyledDiv>
-        <h2 className="mono" onClick={this.props.click}>Im {this.props.name}, I am {this.props.age} years old.</h2>
-        <input type="text" onChange={this.props.changed} placeholder={this.props.name} style={this.inputStyle} />
-      </StyledDiv >
+      <Auxiliary name="Person">
+          <h2 className="mono" onClick={this.props.click}>Im {this.props.name}, I am {this.props.age} years old.</h2>
+          <input type="text" onChange={this.props.changed} placeholder={this.props.name} style={this.inputStyle} />
+      </Auxiliary>
     )
   }
 }

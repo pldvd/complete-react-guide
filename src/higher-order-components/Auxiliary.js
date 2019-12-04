@@ -1,5 +1,11 @@
 import React from 'react';
 
-const Auxiliary = (props) => props.children;
+const Auxiliary = (props) => {
+  return (
+    <div className={props.name}>
+      {props.children}
+    </div>
+  )
+};
 
 export default Auxiliary;

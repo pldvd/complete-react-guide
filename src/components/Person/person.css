@@ -1,9 +1,10 @@
-/* .Person {
+.Person {
   width: 100%;
   border: 2px solid black;
   box-shadow: 0 2px 20px black;
   padding: 15px;
   box-sizing: border-box;
+  background-color: green;
 }
 
 .Person:not(:last-child) {
@@ -13,4 +14,4 @@
 .mono {
   font-family: monospace;
   color: red;
-} */
+}
