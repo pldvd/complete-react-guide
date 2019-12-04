@@ -3,6 +3,7 @@ import Auxiliary from '../../higher-order-components/Auxiliary';
 // import styled from 'styled-components';
 import './person.css';
 
+// No need for this as we are gonna return a higher order component
 // const StyledDiv = styled.div`
 //     width: 100%;
 //     border: 2px solid black;
@@ -34,6 +35,7 @@ class Person extends Component {
     }
   }
 
+  // This is was only used to test the ErrorBoundary component
   // if (props.name === 'petruci') {
   //   throw new Error('name cannot be "petruci"');
   // }
