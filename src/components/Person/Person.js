@@ -41,6 +41,10 @@ class Person extends Component {
     console.log(`[Person] : UNMOUNTING`)
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextProps.name !== this.props.name;
+  }
+
   render() {
     console.log('[Person] render');
     return (
