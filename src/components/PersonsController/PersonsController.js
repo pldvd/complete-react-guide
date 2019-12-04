@@ -29,14 +29,12 @@ const PersonsController = (props) => {
     paragraphClassList.push('bold');
   }
 
-  return (
-    <div>
-      <h1>{props.title}</h1>
-      <p className={paragraphClassList.join(' ')}>This is really working</p>
+  return ([
+      <h1>{props.title}</h1>,
+      <p className={paragraphClassList.join(' ')}>This is really working</p>,
       <StyledButton personsShown={props.showPersons} onClick={props.togglePersonHandler}>Toggle name
       </StyledButton>
-    </div>
-  )
+  ])
 
 }
 
