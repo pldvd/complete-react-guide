@@ -16,7 +16,8 @@ class PersonList extends PureComponent {
     return state;
   }
 
-  //shouldComponentUpdate takes the nextProps and nextState objects as params and returns a boolean: true if the component should update and false if it should not.
+  //shouldComponentUpdate takes the nextProps and nextState objects as params and returns a boolean: true if the component should update and false if it should not. This is removed for now because the class now inherits Purecomponent (which essentially checks for any changes in props before rendering, thus replacing shouldcomponentUpdate)
+
   // shouldComponentUpdate(nextProps, nextState) {
   //   console.log('[Personlist] shouldComponentUpdate');
   //   // console.log(nextProps.persons,this.props.persons);
@@ -24,6 +25,7 @@ class PersonList extends PureComponent {
   // }
 
   //the getSnapshotBeforeUpdate takes the previous props and state object as params and returns a snapshot object (or null) which will be passed on as the 3rd param for the componentDidUpdate lifecycle method (this is used to pass on "last-minute" info about DOM props), must return either a snapshot or null
+  
   getSnapshotBeforeUpdate(prevProps, prevState) {
     console.log('[Personlist] getSnapshotBeforeUpdate');
     return {
