@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Auxiliary from '../../higher-order-components/Auxiliary';
+import withClass from '../../higher-order-components/withClass'
 // import styled from 'styled-components';
 import './person.css';
 
@@ -52,7 +53,7 @@ class Person extends Component {
   render() {
     console.log('[Person] render');
     return (
-      <Auxiliary name="Person">
+      <Auxiliary>
           <h2 className="mono" onClick={this.props.click}>Im {this.props.name}, I am {this.props.age} years old.</h2>
           <input type="text" onChange={this.props.changed} placeholder={this.props.name} style={this.inputStyle} />
       </Auxiliary>
@@ -60,4 +61,4 @@ class Person extends Component {
   }
 }
 
-export default Person;
+export default withClass(Person, 'Person');
