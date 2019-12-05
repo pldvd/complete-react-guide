@@ -42,7 +42,8 @@ class App extends Component {
         { id: 'öläd', name: 'petruci', age: 33 }
       ],
       showPersons: false,
-      personsControllerIsOn: true
+      personsControllerIsOn: true,
+      changeCount: 0
     }
   }
 
@@ -89,8 +90,11 @@ class App extends Component {
     const newPersons = [...this.state.persons];
     newPersons[personIndex] = guy;
 
-    this.setState({
-      persons: newPersons
+    this.setState((prevState, props) => {
+      return {
+        persons: newPersons,
+        changeCount: prevState.changeCount + 1,
+      }
     });
 
   }
