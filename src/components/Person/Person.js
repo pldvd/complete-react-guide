@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Auxiliary from '../../higher-order-components/Auxiliary';
-import withClass from '../../higher-order-components/withClass'
+import withClass from '../../higher-order-components/withClass';
+import PropTypes from 'prop-types';
 // import styled from 'styled-components';
 import './person.css';
 
@@ -54,11 +55,18 @@ class Person extends Component {
     console.log('[Person] render');
     return (
       <Auxiliary>
-          <h2 className="mono" onClick={this.props.click}>Im {this.props.name}, I am {this.props.age} years old.</h2>
-          <input type="text" onChange={this.props.changed} placeholder={this.props.name} style={this.inputStyle} />
+        <h2 className="mono" onClick={this.props.click}>Im {this.props.name}, I am {this.props.age} years old.</h2>
+        <input type="text" onChange={this.props.changed} placeholder={this.props.name} style={this.inputStyle} />
       </Auxiliary>
     )
   }
 }
+
+Person.propTypes = {
+  name: PropTypes.string,
+  click: PropTypes.func,
+  age: PropTypes.number,
+  changed: PropTypes.func
+};
 
 export default withClass(Person, 'Person');
