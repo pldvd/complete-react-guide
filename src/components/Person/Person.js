@@ -51,12 +51,22 @@ class Person extends Component {
     return nextProps.name !== this.props.name;
   }
 
+  componentDidMount() {
+    this.inputEl.focus();
+  }
+
   render() {
     console.log('[Person] render');
     return (
       <Auxiliary>
         <h2 className="mono" onClick={this.props.click}>Im {this.props.name}, I am {this.props.age} years old.</h2>
-        <input type="text" onChange={this.props.changed} placeholder={this.props.name} style={this.inputStyle} />
+        <input
+          type="text"
+          onChange={this.props.changed}
+          ref={(inputEl) => this.inputEl = inputEl}
+          placeholder={this.props.name}
+          style={this.inputStyle}
+        />
       </Auxiliary>
     )
   }
