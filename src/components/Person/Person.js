@@ -34,7 +34,8 @@ class Person extends Component {
     super(props);
     this.inputStyle = {
       borderRadius: '20px'
-    }
+    };
+    this.inputEl = React.createRef();
   }
 
   // This is was only used to test the ErrorBoundary component
@@ -52,7 +53,7 @@ class Person extends Component {
   }
 
   componentDidMount() {
-    this.inputEl.focus();
+    this.inputEl.current.focus();
   }
 
   render() {
@@ -63,7 +64,7 @@ class Person extends Component {
         <input
           type="text"
           onChange={this.props.changed}
-          ref={(inputEl) => this.inputEl = inputEl}
+          ref={this.inputEl}
           placeholder={this.props.name}
           style={this.inputStyle}
         />
