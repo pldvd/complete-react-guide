@@ -53,7 +53,6 @@ class PersonList extends PureComponent {
               age={person.age}
               click={() => this.props.deletePerson(index)}
               changed={event => this.props.changeName(event, person.id)}
-              isLoggedIn={this.props.isLoggedIn}
               >
             </Person>
           </ErrorBoundary>

@@ -3,6 +3,7 @@ import Auxiliary from '../../higher-order-components/Auxiliary';
 import withClass from '../../higher-order-components/withClass';
 import PropTypes from 'prop-types';
 // import styled from 'styled-components';
+import AuthContext from '../../context/Auth-context';
 import './person.css';
 
 // No need for this as we are gonna return a higher order component
@@ -60,7 +61,12 @@ class Person extends PureComponent {
     console.log('[Person] render');
     return (
       <Auxiliary>
-        {this.props.isLoggedIn ? <h1>Logged in</h1> : <h1>Please log in</h1>}
+        <AuthContext.Consumer>
+          {(context) =>
+            (context.authenticated ? <h1>Logged in</h1> : <h1>Please log in</h1>
+            )
+          }
+        </AuthContext.Consumer>
         <h2 className="mono" onClick={this.props.click}>Im {this.props.name}, I am {this.props.age} years old.</h2>
         <input
           type="text"
@@ -79,7 +85,6 @@ Person.propTypes = {
   click: PropTypes.func,
   age: PropTypes.number,
   changed: PropTypes.func,
-  isLoggedIn: PropTypes.bool
 };
 
 export default withClass(Person, 'Person');

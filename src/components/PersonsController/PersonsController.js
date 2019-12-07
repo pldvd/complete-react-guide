@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, Fragment } from 'react';
 import styled from 'styled-components';
+import AuthContext from '../../context/Auth-context';
 
 const StyledButton = styled.button`
   background-color: ${props => props.personsShown ? 'red' : 'green'};
@@ -38,7 +39,10 @@ const PersonsController = (props) => {
       <p className={paragraphClassList.join(' ')}>This is really working</p>
       <StyledButton personsShown={props.showPersons} onClick={props.togglePersonHandler} ref={buttonReference}>Toggle name
       </StyledButton>
-      <StyledButton onClick={props.logIn}>Login</StyledButton>
+      <AuthContext.Consumer>
+        { (context) => <StyledButton onClick={context.logIn}>Login</StyledButton>
+        }
+      </AuthContext.Consumer>
     </Fragment>
   )
 

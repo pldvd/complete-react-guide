@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import PersonList from '../components/PersonList/PersonList';
 import PersonsController from '../components/PersonsController/PersonsController';
+import AuthContext from '../context/Auth-context';
 
 const AppStyledDiv = styled.div`
 max-width: 800px;
@@ -84,7 +85,7 @@ class App extends Component {
   }
 
   logIn = () => {
-    this.setState({isLoggedIn: true});
+    this.setState({ isLoggedIn: true });
   }
 
   changeName = (event, id) => {
@@ -113,20 +114,27 @@ class App extends Component {
     return (
       <AppStyledDiv>
         <button onClick={() => this.setState({ personsControllerIsOn: !this.state.personsControllerIsOn })}>Delete otherButton</button>
-        {this.state.personsControllerIsOn ? <PersonsController
-          persons={this.state.persons}
-          togglePersonHandler={this.togglePersonHandler}
-          showPersons={this.state.showPersons}
-          title={this.props.pageTitle}
-          logIn={this.logIn}
-        /> : null}
-        <PersonList
-          personsAreShown={this.state.showPersons}
-          persons={this.state.persons}
-          deletePerson={this.deletePerson}
-          changeName={this.changeName}
-          isLoggedIn={this.state.isLoggedIn}
-        />
+        <AuthContext.Provider
+          value={
+            {
+              authenticated: this.state.isLoggedIn,
+              logIn: this.logIn,
+            }
+          }>
+          {this.state.personsControllerIsOn ?
+            <PersonsController
+              persons={this.state.persons}
+              togglePersonHandler={this.togglePersonHandler}
+              showPersons={this.state.showPersons}
+              title={this.props.pageTitle}
+            /> : null}
+          <PersonList
+            personsAreShown={this.state.showPersons}
+            persons={this.state.persons}
+            deletePerson={this.deletePerson}
+            changeName={this.changeName}
+          />
+        </AuthContext.Provider>
       </AppStyledDiv>
     );
   }
