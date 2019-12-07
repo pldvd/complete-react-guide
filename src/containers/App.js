@@ -43,7 +43,8 @@ class App extends Component {
       ],
       showPersons: false,
       personsControllerIsOn: true,
-      changeCount: 0
+      changeCount: 0,
+      isLoggedIn: false,
     }
   }
 
@@ -82,6 +83,10 @@ class App extends Component {
     this.setState({ persons: persons });
   }
 
+  logIn = () => {
+    this.setState({isLoggedIn: true});
+  }
+
   changeName = (event, id) => {
     const personIndex = this.state.persons.findIndex(person => person.id === id);
     const guy = { ...this.state.persons[personIndex] }
@@ -113,12 +118,14 @@ class App extends Component {
           togglePersonHandler={this.togglePersonHandler}
           showPersons={this.state.showPersons}
           title={this.props.pageTitle}
+          logIn={this.logIn}
         /> : null}
         <PersonList
           personsAreShown={this.state.showPersons}
           persons={this.state.persons}
           deletePerson={this.deletePerson}
           changeName={this.changeName}
+          isLoggedIn={this.state.isLoggedIn}
         />
       </AppStyledDiv>
     );

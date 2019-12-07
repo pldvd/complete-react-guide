@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Auxiliary from '../../higher-order-components/Auxiliary';
 import withClass from '../../higher-order-components/withClass';
 import PropTypes from 'prop-types';
@@ -27,7 +27,7 @@ import './person.css';
 //   }
 //   `;
 
-class Person extends Component {
+class Person extends PureComponent {
 
   constructor(props) {
     console.log('[Person] constructor');
@@ -43,14 +43,14 @@ class Person extends Component {
   //   throw new Error('name cannot be "petruci"');
   // }
 
-  componentWillUnmount() {
-    console.log(`[Person] : UNMOUNTING`)
-  }
+  // componentWillUnmount() {
+  //   console.log(`[Person] : UNMOUNTING`)
+  // }
 
-  //This is neccessary because props always change if props.name changes, after trying it out with PureComponent
-  shouldComponentUpdate(nextProps, nextState) {
-    return nextProps.name !== this.props.name;
-  }
+  // //This is neccessary because props always change if props.name changes, after trying it out with PureComponent
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   return nextProps.name !== this.props.name;
+  // }
 
   componentDidMount() {
     this.inputEl.current.focus();
@@ -60,6 +60,7 @@ class Person extends Component {
     console.log('[Person] render');
     return (
       <Auxiliary>
+        {this.props.isLoggedIn ? <h1>Logged in</h1> : <h1>Please log in</h1>}
         <h2 className="mono" onClick={this.props.click}>Im {this.props.name}, I am {this.props.age} years old.</h2>
         <input
           type="text"
@@ -77,7 +78,8 @@ Person.propTypes = {
   name: PropTypes.string,
   click: PropTypes.func,
   age: PropTypes.number,
-  changed: PropTypes.func
+  changed: PropTypes.func,
+  isLoggedIn: PropTypes.bool
 };
 
 export default withClass(Person, 'Person');

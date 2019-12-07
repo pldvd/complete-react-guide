@@ -38,6 +38,7 @@ const PersonsController = (props) => {
       <p className={paragraphClassList.join(' ')}>This is really working</p>
       <StyledButton personsShown={props.showPersons} onClick={props.togglePersonHandler} ref={buttonReference}>Toggle name
       </StyledButton>
+      <StyledButton onClick={props.logIn}>Login</StyledButton>
     </Fragment>
   )
 
