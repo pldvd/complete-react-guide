@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment } from 'react';
+import React, { useEffect, useRef, Fragment } from 'react';
 import styled from 'styled-components';
 
 const StyledButton = styled.button`
@@ -14,9 +14,12 @@ const StyledButton = styled.button`
 
 const PersonsController = (props) => {
 
+  const buttonReference = useRef(null);
+
   useEffect(() => {
     console.log('[PersonsController] useEffect');
     // alert('useffect was triggered');
+    setTimeout(() => buttonReference.current.click(), 2000);
     return () => console.log('[PersonsController] UNMOUNT cleanup')
   }, []);
   //if you pass an empty array as second argument to useEffect, then useEffect will only triger at component did mount and the return function will only run at componentWillUnmount
@@ -33,7 +36,7 @@ const PersonsController = (props) => {
     <Fragment>
       <h1>{props.title}</h1>
       <p className={paragraphClassList.join(' ')}>This is really working</p>
-      <StyledButton personsShown={props.showPersons} onClick={props.togglePersonHandler}>Toggle name
+      <StyledButton personsShown={props.showPersons} onClick={props.togglePersonHandler} ref={buttonReference}>Toggle name
       </StyledButton>
     </Fragment>
   )
